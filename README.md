@@ -111,7 +111,9 @@ async function getLux() {
 
 ### Enums
 
-#### SensorManager (For android only, see more in: https://developer.android.com/reference/android/hardware/SensorManager#SENSOR_DELAY_FASTEST )
+#### SensorManager 
+<br>
+(For android only, see more in: https://developer.android.com/reference/android/hardware/SensorManager#SENSOR_DELAY_FASTEST )
 <!-- https://www.tablesgenerator.com/markdown_tables -->
 
 | Members              | Value | Description                                   |
