@@ -104,7 +104,7 @@ async function getLux() {
     });
 
   } catch (error) {
-    console.log("Light sensor not available");
+    console.log("Error occur:", error);
   }
 }
 ```
