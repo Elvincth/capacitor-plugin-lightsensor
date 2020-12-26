@@ -189,12 +189,15 @@ Option
 
 Register [onLightSensorChanged listener](#onLightSensorChanged) (Start or resume the sensor, see example [here](#getting-illuminance-level) )
 
+**Returns:** <code>Promise</code>
+
 <br>
 
 #### unregisterListener()
 
 Unregister [onLightSensorChanged listener](#onLightSensorChanged)  (Stop or pause the sensor, see example [here](#getting-illuminance-level) )
 
+**Returns:** <code>Promise</code>
 <br>
 
 
