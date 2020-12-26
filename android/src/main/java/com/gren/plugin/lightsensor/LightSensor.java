@@ -109,8 +109,8 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
     //Used to resume or start
     protected void onResume() {
-        sensorManager.registerListener(this, mLight, SensorManager.SENSOR_DELAY_FASTEST);
-    }
+            sensorManager.registerListener(this, mLight, SensorManager.SENSOR_DELAY_FASTEST);
+       }
 
     //Used to pause the sensor
     protected void onPause() {

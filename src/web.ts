@@ -2,8 +2,6 @@ import { WebPlugin } from '@capacitor/core';
 import { LightSensorPlugin, SensorManager } from './definitions';
 
 export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
-  isPause: Boolean = false;
-
   constructor() {
     super({
       name: 'LightSensor',
@@ -11,22 +9,41 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
     });
   }
 
-  //Used to register the listner
+  //Trigger the custom event and pass in the changed lux
+  private onLightSensorChanged(event: any): void {
+    var evt = new CustomEvent<{
+      accuracy: Number;
+      timestamp: Number;
+      value: Number;
+    }>('onLightSensorChanged', {
+      detail: {
+        accuracy: -1,
+        timestamp: Number(
+          (performance.now() + performance.timeOrigin).toFixed(0),
+        ), //millisecond
+        value: event.value,
+      },
+    });
+    //Trigger the evt
+    window.dispatchEvent(evt);
+  }
+
+  //Used to register the listener
   protected onResume(): void {
-    // var evt = new CustomEvent('printerstatechanged', { detail: state });
-    // window.dispatchEvent(evt);
+    window.addEventListener('devicelight', this.onLightSensorChanged);
+  }
+
+  //Used to pause the sensor
+  protected onPause(): void {
+    window.removeEventListener('devicelight', this.onLightSensorChanged);
   }
 
   unregisterListener(): void {
-    this.isPause = true;
+    this.onPause();
   }
 
   registerListener(): void {
-    // var evt = new CustomEvent('printerstatechanged', { detail: state });
-
-    // window.dispatchEvent(evt);
-
-    this.isPause = true;
+    this.onResume();
   }
 
   async isAvailable(): Promise<{ status: Boolean }> {
@@ -68,7 +85,7 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
   async init(option?: { SensorDelay: SensorManager }): Promise<void> {
     // let lux = 0;
 
-    option;
+    option; //Dummy used to trick the compiler
 
     // window.addEventListener('devicelight', function (event) {
     //   lux = event.value;
