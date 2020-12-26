@@ -1,7 +1,7 @@
 {
   "name": "capacitor-plugin-lightsensor",
   "version": "0.0.1",
-  "description": "A light sensor",
+  "description": "A capacitor light sensor plugin",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -14,7 +14,7 @@
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build"
   },
-  "author": "Elvin CHu",
+  "author": "Elvin Chu",
   "license": "MIT",
   "devDependencies": {
     "@capacitor/android": "^2.4.5",

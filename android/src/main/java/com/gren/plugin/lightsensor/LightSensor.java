@@ -31,11 +31,14 @@ public class LightSensor extends Plugin implements SensorEventListener {
         int SensorDelay = call.getInt("SensorDelay", 0);
         delayMode = SensorDelay; //Set the delay mode
 
+        JSObject status = new JSObject();
+        status.put("status", true);
+
         //init sensors
         if (isSensorAvailable()) {
             sensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
             mLight = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-            call.resolve(); //succeeding corresponds to calling resolve on the Promise
+            call.resolve(status); //succeeding corresponds to calling resolve on the Promise
             Log.d("LightSensor", "Loaded");
         } else {
             call.reject("Light sensor not available");

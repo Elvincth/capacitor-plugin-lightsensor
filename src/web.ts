@@ -83,21 +83,13 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
   }
 
   async init(option?: { SensorDelay: SensorManager }): Promise<void> {
-    // let lux = 0;
-
     option; //Dummy used to trick the compiler
 
-    // window.addEventListener('devicelight', function (event) {
-    //   lux = event.value;
-    // });
-
-    // if (!this.isPause) {
-    //   return {
-    //     data: {
-    //       value: lux,
-    //     },
-    //   };
-    // }
+    if ('AmbientLightSensor' in window) {
+      Promise.resolve({ status: true }); //Return status
+    } else {
+      Promise.reject('Light sensor not available');
+    }
   }
 }
 
