@@ -4,6 +4,19 @@ declare module '@capacitor/core' {
   }
 }
 
+/**
+ * @typedef SensorManager
+ * @property {number} SENSOR_DELAY_FASTEST 0
+ * @property {string} SENSOR_DELAY_GAME 1
+ * @property {string} SENSOR_DELAY_UI 2
+ * @property {string} SENSOR_DELAY_NORMAL 3
+ */
+
+/**
+ * SensorManager for android only
+ * See here: https://developer.android.com/reference/android/hardware/SensorManager#SENSOR_DELAY_FASTEST
+ * @enum {SensorManager}
+ */
 export enum SensorManager {
   SENSOR_DELAY_FASTEST = 0, //get sensor data as fast as possible
   SENSOR_DELAY_GAME = 1, //rate suitable for games
@@ -12,22 +25,37 @@ export enum SensorManager {
 }
 
 export interface LightSensorPlugin {
+  /**
+   * A number, or a string containing a number.
+   * @typedef {object} option
+   * @property {SensorManager=1} SensorDelay Delay rate of the sensor
+   */
+
+  /**
+   * Register onSensorChanged listener
+   * @param {option=} option of light sensor
+   * @returns {Promise} Is initialization of light sensor succeed or not
+   */
   init(option?: { SensorDelay: SensorManager }): Promise<void>;
 
+  /**
+   * Register onLightSensorChanged listener
+   * @returns void
+   */
   registerListener(): void;
 
+  /**
+   * Unregister onLightSensorChanged listener
+   * @returns void
+   */
   unregisterListener(): void;
-  /*
-        sensorObj.put("vendor", mLight.getVendor()); //String
-        sensorObj.put("version", mLight.getVersion());//Int
-        sensorObj.put("type", mLight.getType());//Number
-        sensorObj.put("maxRange", mLight.getMaximumRange());//Number
-        sensorObj.put("resolution", mLight.getResolution());//Number
-        sensorObj.put("power", mLight.getPower());//Number
-        sensorObj.put("minDelay", mLight.getMinDelay());//Number
-        sensorObj.put("maxDelay", mLight.getMaxDelay());//Number
 
-*/
+
+  
+  /**
+   * Get light sensor information
+   * @returns {Promise} Return information of the sensor or error
+   */
   getInfo(): Promise<{
     vendor: String;
     version: Number;
@@ -37,9 +65,21 @@ export interface LightSensorPlugin {
     power: Number;
     minDelay: Number;
     maxDelay: Number;
-  }|void>;
+  } | void>;
 
+  /**
+   * Check is light sensor available
+   * @returns {Promise} Return the status of the light sensor
+   */
   isAvailable(): Promise<{ status: Boolean }>;
+
+  /**
+   * onLightSensorChanged
+   *
+   * @event onLightSensorChanged
+   * @type {object}
+   * @returns {"isTrusted":Boolean,"accuracy":3,"timestamp":58769305913765,"value":281.9115905761719}
+   */
 }
 
 //See https://developer.android.com/reference/android/hardware/SensorManager#SENSOR_DELAY_FASTEST

@@ -38,10 +38,18 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
     window.removeEventListener('devicelight', this.onLightSensorChanged);
   }
 
+  /**
+   * Unregister onLightSensorChanged listener
+   * @returns void
+   */
   unregisterListener(): void {
     this.onPause();
   }
 
+  /**
+   * Register onLightSensorChanged listener
+   * @returns void
+   */
   registerListener(): void {
     this.onResume();
   }
