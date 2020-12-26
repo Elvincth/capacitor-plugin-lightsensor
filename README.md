@@ -98,7 +98,8 @@ async function getLux() {
       console.log("accuracy", evt.accuracy); //Android only the accuracy of this event, for web return -1
       console.log("timestamp", evt.timestamp); //For android in nanoseconds, For web in millisecond
       
-      console.log("onLightSensorChanged", JSON.stringify(evt));  //{"isTrusted":false,"accuracy":3,"timestamp":58769305913765,"value":281.9115905761719}
+      console.log("onLightSensorChanged", JSON.stringify(evt));  
+      //{"isTrusted":false,"accuracy":3,"timestamp":58769305913765,"value":281.9115905761719}
     });
 
   } catch (error) {
