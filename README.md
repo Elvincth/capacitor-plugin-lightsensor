@@ -46,10 +46,10 @@ npx cap sync
 
 iOS Platform: No further action required.
 
-Android Platform: Register the plugin in your main activity:
+Android Platform: Register the plugin in your main activity(MainActivity.java):
 
 ```java
-import com.gren.plugin.lightsensor.LightSensor;
+import com.gren.plugin.lightsensor.LightSensor; //ADD this line
 
 public class MainActivity extends BridgeActivity {
 
@@ -65,7 +65,7 @@ public class MainActivity extends BridgeActivity {
           {
             // Additional plugins you've installed go here
             // Ex: add(TotallyAwesomePlugin.class);
-             add(LightSensor.class);
+             add(LightSensor.class); //ADD this line
           }
         }
       );
