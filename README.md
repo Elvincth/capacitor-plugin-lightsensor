@@ -91,7 +91,7 @@ async function getLux() {
     });
 
     //Register onLightSensorChanged listener
-    LightSensor.registerListener();
+    await LightSensor.registerListener();
 
     //Listen for the sensor change
     window.addEventListener("onLightSensorChanged", (evt) => {
@@ -195,7 +195,7 @@ Register [onLightSensorChanged listener](#onLightSensorChanged) (Start or resume
 
 #### unregisterListener()
 
-Unregister [onLightSensorChanged listener](#onLightSensorChanged)  (Stop or pause the sensor, see example [here](#getting-illuminance-level) )
+Unregister [onLightSensorChanged listener](#onLightSensorChanged)
 
 **Returns:** <code>Promise</code>
 <br>
