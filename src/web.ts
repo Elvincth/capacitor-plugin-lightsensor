@@ -11,22 +11,41 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
     });
   }
 
+  //Used to register the listner
+  protected onResume(): void {
+    // var evt = new CustomEvent('printerstatechanged', { detail: state });
+
+    // window.dispatchEvent(evt);
+
+  }
+
   unregisterListener(): void {
     this.isPause = true;
   }
 
   registerListener(): void {
+    // var evt = new CustomEvent('printerstatechanged', { detail: state });
+
+    // window.dispatchEvent(evt);
+
     this.isPause = true;
   }
 
   async isAvailable(): Promise<{ status: Boolean }> {
+    let status: Boolean = false;
+
+    //Check is AmbientLightSensor available in the browser
+    if ('AmbientLightSensor' in window) {
+      status = true;
+    }
+    
     return {
-      status: false, //Dummy data
+      status: status,
     };
   }
 
   async getInfo(): Promise<{
-    vendor: Number;
+    vendor: String;
     version: Number;
     type: Number;
     maxRange: Number;
@@ -34,9 +53,15 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
     power: Number;
     minDelay: Number;
     maxDelay: Number;
-  } | void> {}
+  }> {
 
-  async init(option?: { SensorDelay: SensorManager }):  Promise<void> {
+    return {
+      vendor: -1;
+    }
+
+  }
+
+  async init(option?: { SensorDelay: SensorManager }): Promise<void> {
     // let lux = 0;
 
     option;

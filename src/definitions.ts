@@ -12,7 +12,7 @@ export enum SensorManager {
 }
 
 export interface LightSensorPlugin {
-  init(option?: { SensorDelay: SensorManager }):  Promise<void>;
+  init(option?: { SensorDelay: SensorManager }): Promise<void>;
 
   registerListener(): void;
 
@@ -29,7 +29,7 @@ export interface LightSensorPlugin {
 
 */
   getInfo(): Promise<{
-    vendor: Number;
+    vendor: String;
     version: Number;
     type: Number;
     maxRange: Number;
@@ -37,7 +37,7 @@ export interface LightSensorPlugin {
     power: Number;
     minDelay: Number;
     maxDelay: Number;
-  } | void>;
+  }>;
 
   isAvailable(): Promise<{ status: Boolean }>;
 }
