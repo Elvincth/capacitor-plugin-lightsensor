@@ -2,7 +2,7 @@
 <h3 align="center">capacitor-plugin-lightsensor</h3>
 <p align="center"><strong><code>@capacitor-community/example</code></strong></p>
 <p align="center">
-This plugin get intensity level on the device. 
+This plugin get intensity level on the device
 </p>
 
 <p align="center">
