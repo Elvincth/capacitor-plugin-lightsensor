@@ -18,15 +18,10 @@ import org.json.JSONObject;
 @NativePlugin
 public class LightSensor extends Plugin implements SensorEventListener {
 
-    private SensorManager sensorManager;
-    private Sensor mLight;
+    private SensorManager sensorManager = null;
+    private Sensor mLight = null;
     private float lux = 0; //Store readings value
     private int delayMode = 0; //Store sensor delay setting value possible values 0,1,2,3
-
-    public void load(){
-        //Init sensor manager
-        sensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
-    }
 
     @PluginMethod
     public void init(PluginCall call) {
@@ -36,7 +31,10 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
         //init sensors
         if (isSensorAvailable()) {
-            mLight = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+            if(mLight==null){
+                mLight = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+            }
+
             call.resolve(); //succeeding corresponds to calling resolve on the Promise
             Log.d("LightSensor", "Loaded");
         } else {
@@ -50,7 +48,7 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
     @PluginMethod
     public void unregisterListener(PluginCall call) {
-        if (mLight != null) {
+        if (mLight != null && sensorManager!= null) {
             onPause(); //Pause sensor
             call.resolve();
         }else{
@@ -60,7 +58,7 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
     @PluginMethod
     public void registerListener(PluginCall call) {
-        if (mLight != null) {
+        if (mLight != null && sensorManager!= null) {
             onResume(); //Register sensor
             call.resolve();
         }else{
@@ -72,6 +70,10 @@ public class LightSensor extends Plugin implements SensorEventListener {
     @PluginMethod
     public void isAvailable(PluginCall call) {
         JSObject status = new JSObject();
+
+        if(sensorManager==null){
+            sensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
+        }
 
         if (isSensorAvailable()) {
             status.put("status", true);
@@ -115,16 +117,12 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
     //Used to resume or start
     protected void onResume() {
-        sensorManager.registerListener(this, mLight, SensorManager.SENSOR_DELAY_FASTEST);
+            sensorManager.registerListener(this, mLight, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     //Used to pause the sensor
     protected void onPause() {
-        if (sensorManager != null) {
             sensorManager.unregisterListener(this);
-            sensorManager=null;
-        }
-
         Log.d("onPause", "Sensor stopped: " + sensorManager);
 
     }
