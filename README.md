@@ -21,7 +21,7 @@
 
 | Maintainer | GitHub | Social |
 | -----------| -------| -------|
-| Elvin Chu | [Elvinchu](https://github.com/elvinchu) | [@elvincth](https://twitter.com/elvincth) |
+| Elvin Chu | [Elvincth](https://github.com/elvincth) | [@elvincth](https://twitter.com/elvincth) |
 
 ## Installation
 
