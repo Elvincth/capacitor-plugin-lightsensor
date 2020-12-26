@@ -50,7 +50,7 @@ public class LightSensor extends Plugin implements SensorEventListener {
             onPause(); //Pause sensor
             call.resolve();
         }else{
-            call.reject("Light sensor haven't init");
+            call.reject("Call unregisterListener() before init!");
         }
     }
 
@@ -60,7 +60,7 @@ public class LightSensor extends Plugin implements SensorEventListener {
             onResume(); //Register sensor
             call.resolve();
         }else{
-            call.reject("Light sensor haven't init");
+            call.reject("Call registerListener() before init!");
         }
     }
 
