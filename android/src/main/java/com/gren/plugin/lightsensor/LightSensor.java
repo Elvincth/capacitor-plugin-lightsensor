@@ -26,7 +26,7 @@ public class LightSensor extends Plugin implements SensorEventListener {
     @PluginMethod
     public void init(PluginCall call) {
         //Get settings value from passed init method
-        int SensorDelay = call.getInt("SensorDelay", 0);
+        int SensorDelay = call.getInt("SensorDelay", 3);
         delayMode = SensorDelay; //Set the delay mode
 
         //init sensors
@@ -107,9 +107,9 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
     //Used to pause the sensor
     protected void onPause() {
-
         if (sensorManager != null) {
             sensorManager.unregisterListener(this);
+            sensorManager=null;
         }
 
         Log.d("onPause", "Sensor stopped: " + sensorManager);
