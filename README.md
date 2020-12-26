@@ -36,7 +36,7 @@ npx cap sync
 
 IOS Platform: No further action required.
 
-Android Platform: Register the plugin in your main activity (MainActivity.java):
+<b>Android Platform: Register the plugin in your main activity (MainActivity.java):</b>
 
 ```java
 import com.gren.plugin.lightsensor.LightSensor; //ADD this line
@@ -59,9 +59,9 @@ public class MainActivity extends BridgeActivity {
 }
 ```
 
-## Configuration
+<!-- ## Configuration TODO -->
 
-TODO
+
 
 ## Supported methods
 
@@ -76,7 +76,7 @@ TODO
 
 ## Usage
 
-### Example of getting illuminance level
+### Getting illuminance level
 ```javascript
 import { SensorManager } from "capacitor-plugin-lightsensor";
 import { Plugins } from "@capacitor/core"; 
@@ -107,11 +107,33 @@ async function getLux() {
   }
 }
 ```
-
-### Example of getting the light sensor information
+### Check the availability of light sensor 
 ```javascript
-//See more in https://developer.android.com/reference/android/hardware/Sensor#getVendor()
+import { SensorManager } from "capacitor-plugin-lightsensor";
+import { Plugins } from "@capacitor/core"; 
+const { LightSensor } = Plugins;
 
+async function checkSensor() {
+  const isSensorAvailable = await LightSensor.isAvailable();
+
+  if (isSensorAvailable.status) {
+    console.log("There is light sensor in this device");
+  } else {
+    console.log("No light sensor in this device");
+  }
+  
+  console.log("isSensorAvailable", JSON.stringify(isSensorAvailable)); // {"status":true} or {"status":false}
+}
+
+```
+
+### Getting the light sensor information (Android ONLY)
+```javascript
+import { SensorManager } from "capacitor-plugin-lightsensor";
+import { Plugins } from "@capacitor/core"; 
+const { LightSensor } = Plugins;
+
+//See more in https://developer.android.com/reference/android/hardware/Sensor#getVendor()
 async function getInfo() {
   try {
     const sensorInfo = await LightSensor.getInfo();
@@ -137,6 +159,24 @@ async function getInfo() {
 
 
 ## API
+
+### Methods
+
+#### init(...)
+
+```typescript
+init(option?: { SensorDelay: SensorManager }): Promise<void>;
+```
+
+Initialize the light sensor with settings
+
+| Param   | Type    | Description                                        |
+|---------|---------|----------------------------------------------------|
+| **`option`**   | `object`  | <code><a href="#init">See option table</a></code>  |
+
+
+**Returns:** <code>Promise</code>
+
 
 ### Enums
 
