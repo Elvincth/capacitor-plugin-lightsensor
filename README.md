@@ -27,27 +27,12 @@ This plugin get intensity level on the device
 
 <b> Step 1 </b>
 
-For npm:
-
 ```bash
 npm install capacitor-plugin-lightsensor --save
-```
-
-For yarn:
-
-```bash
-yarn add @capacitor-community/speech-recognition
-```
-
-<b> Step 2 </b>
-
-After install run:
-
-```bash
 npx cap sync
 ```
 
-<b> Step 3 </b>
+<b> Step 2 </b>
 
 IOS Platform: No further action required.
 
@@ -99,3 +84,7 @@ const { LightSensor } = Plugins;
 
 
 ```
+
+## API
+
+
