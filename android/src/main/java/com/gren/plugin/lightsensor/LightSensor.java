@@ -7,30 +7,27 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import android.util.Log;
-
 import com.getcapacitor.JSObject;
 import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 @NativePlugin
 public class LightSensor extends Plugin implements SensorEventListener {
+
     private SensorManager sensorManager;
     private Sensor mLight;
     private float lux = 0; //Store readings value
     private int delayMode = 0; //Store sensor delay setting value possible values 0,1,2,3
-
 
     @PluginMethod
     public void init(PluginCall call) {
         //Get settings value from passed init method
         int SensorDelay = call.getInt("SensorDelay", 0);
         delayMode = SensorDelay; //Set the delay mode
-
 
         //init sensors
         if (isSensorAvailable()) {
@@ -43,11 +40,9 @@ public class LightSensor extends Plugin implements SensorEventListener {
             Log.d("LightSensor", "No sensor");
         }
 
-
         //Just some logging
         Log.d("Settings:", Integer.toString(SensorDelay));
     }
-
 
     @PluginMethod
     public void unregisterListener(PluginCall call) {
@@ -73,29 +68,26 @@ public class LightSensor extends Plugin implements SensorEventListener {
         call.resolve(status);
     }
 
-
     //Return sensor information
     @PluginMethod
     public void getInfo(PluginCall call) {
-
         if (isSensorAvailable()) {
             JSObject sensorObj = new JSObject(); //Sensor obj
             //For sensor info
 
             sensorObj.put("vendor", mLight.getVendor()); //String
-            sensorObj.put("version", mLight.getVersion());//Int
-            sensorObj.put("type", mLight.getType());//Number
-            sensorObj.put("maxRange", mLight.getMaximumRange());//Number
-            sensorObj.put("resolution", mLight.getResolution());//Number
-            sensorObj.put("power", mLight.getPower());//Number
-            sensorObj.put("minDelay", mLight.getMinDelay());//Number
-            sensorObj.put("maxDelay", mLight.getMaxDelay());//Number
+            sensorObj.put("version", mLight.getVersion()); //Int
+            sensorObj.put("type", mLight.getType()); //Number
+            sensorObj.put("maxRange", mLight.getMaximumRange()); //Number
+            sensorObj.put("resolution", mLight.getResolution()); //Number
+            sensorObj.put("power", mLight.getPower()); //Number
+            sensorObj.put("minDelay", mLight.getMinDelay()); //Number
+            sensorObj.put("maxDelay", mLight.getMaxDelay()); //Number
             call.resolve(sensorObj); //succeeding corresponds to calling resolve on the Promise
         } else {
             call.reject("Light sensor not available cannot get info");
             Log.d("LightSensor", "No sensor");
         }
-
     }
 
     //Used to check is sensor available
@@ -104,18 +96,24 @@ public class LightSensor extends Plugin implements SensorEventListener {
         if (sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT) != null) {
             return true;
         } else {
-            return false;     // Failure! No sensor.
+            return false; // Failure! No sensor.
         }
     }
 
     //Used to resume or start
     protected void onResume() {
-            sensorManager.registerListener(this, mLight, SensorManager.SENSOR_DELAY_FASTEST);
-       }
+        sensorManager.registerListener(this, mLight, SensorManager.SENSOR_DELAY_FASTEST);
+    }
 
     //Used to pause the sensor
     protected void onPause() {
-        sensorManager.unregisterListener(this);
+        if (sensorManager != null) {
+            sensorManager.unregisterListener(this);
+            sensorManager=null;
+        }
+
+        Log.d("onPause", "Sensor stopped: " + sensorManager);
+
     }
 
     @Override
@@ -134,9 +132,5 @@ public class LightSensor extends Plugin implements SensorEventListener {
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
-
-
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 }
