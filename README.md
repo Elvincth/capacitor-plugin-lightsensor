@@ -1,5 +1,5 @@
 <p align="center"><br><img src="https://i.imgur.com/VbLeXoQ.png" width="128" height="128" /></p>
-<h3 align="center">Capacitor lightsensor plugin</h3>
+<h3 align="center">Capacitor Lightsensor Plugin</h3>
 <p align="center"><strong><code>capacitor-plugin-lightsensor</code></strong></p>
 <p align="center">
 This plugin get intensity level on the device
