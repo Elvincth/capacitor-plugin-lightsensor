@@ -25,7 +25,53 @@ This plugin get intensity level on the device
 
 ## Installation
 
-TODO
+
+For npm:
+
+```bash
+npm install @capacitor-community/speech-recognition
+```
+
+For yarn:
+
+```bash
+yarn add @capacitor-community/speech-recognition
+```
+
+After install run:
+
+```bash
+npx cap sync
+```
+
+iOS Platform: No further action required.
+
+Android Platform: Register the plugin in your main activity:
+
+```java
+import com.gren.plugin.lightsensor.LightSensor;
+
+public class MainActivity extends BridgeActivity {
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    // Initializes the Bridge
+    this.init(
+        savedInstanceState,
+        new ArrayList<Class<? extends Plugin>>() {
+
+          {
+            // Additional plugins you've installed go here
+            // Ex: add(TotallyAwesomePlugin.class);
+             add(LightSensor.class);
+          }
+        }
+      );
+  }
+}
+```
 
 ## Configuration
 
