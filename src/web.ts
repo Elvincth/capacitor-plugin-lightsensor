@@ -31,8 +31,6 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
   //Used to register the listener
   protected onResume(): void {
     window.addEventListener('devicelight', this.onLightSensorChanged);
-
-    
   }
 
   //Used to pause the sensor
@@ -44,7 +42,7 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
    * Unregister onLightSensorChanged listener
    * @returns void
    */
-  unregisterListener(): Promise<void>{
+  unregisterListener(): Promise<void> {
     this.onPause();
     return Promise.resolve(); //Return status
   }
@@ -52,7 +50,7 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
    * Register onLightSensorChanged listener
    * @returns void
    */
-  registerListener(): Promise<void>{
+  registerListener(): Promise<void> {
     this.onResume();
     return Promise.resolve(); //Return status
   }

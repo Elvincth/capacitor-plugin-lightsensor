@@ -1,6 +1,6 @@
 {
   "name": "capacitor-plugin-lightsensor",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A capacitor light sensor plugin",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
