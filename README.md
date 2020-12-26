@@ -77,6 +77,7 @@ public class MainActivity extends BridgeActivity {
 ## Usage
 
 ### Getting illuminance level
+<a id="Gettingilluminancelevel"></a>
 ```javascript
 import { SensorManager } from "capacitor-plugin-lightsensor";
 import { Plugins } from "@capacitor/core"; 
