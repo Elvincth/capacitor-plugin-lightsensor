@@ -2,7 +2,7 @@
 <h3 align="center">capacitor-plugin-lightsensor</h3>
 <p align="center"><strong><code>@capacitor-community/example</code></strong></p>
 <p align="center">
- A lightsensor plugin for capacitor
+This plugin get intensity level on the device. The API will trigger the onLightSensorChanged event and return the intensity level.
 </p>
 
 <p align="center">
