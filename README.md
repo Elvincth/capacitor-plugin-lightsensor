@@ -87,7 +87,7 @@ async function getLux() {
   try {
     //Initialize the sensor with some settings
     await LightSensor.init({
-      SensorDelay: SensorManager.SENSOR_DELAY_UI, //Optional for android only Default is SENSOR_DELAY_NORMAL
+      SensorDelay: SensorManager.SENSOR_DELAY_UI, //Optional, for android only Default is SENSOR_DELAY_NORMAL
     });
 
     //Register onLightSensorChanged listener
@@ -176,9 +176,9 @@ Initialize the light sensor with settings (See example [here](#getting-illuminan
 
 Option
 
-| Key         | Type                 | Description                                                            |
-|-------------|----------------------|------------------------------------------------------------------------|
-| SensorDelay | [ Enum (SensorManager)](#sensormanager) | Optional for android only Default is SensorManager.SENSOR_DELAY_NORMAL |
+| Key         | Type                             | Description                                                            |
+|-------------|-------------------------------------|------------------------------------------------------------------------|
+| SensorDelay | [ Enum (SensorManager)](#sensormanager) | Optional, for android only Default is SensorManager.SENSOR_DELAY_NORMAL |
 
 
 **Returns:** <code>Promise</code>
