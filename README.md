@@ -164,7 +164,7 @@ async function getInfo() {
 
 #### init(...)
 
-Initialize the light sensor with settings (See example [here](# Getting illuminance level) )
+Initialize the light sensor with settings (See example [here](#Getting illuminance level) )
 
 | Param   | Type    | Description                                        |
 |---------|---------|----------------------------------------------------|
