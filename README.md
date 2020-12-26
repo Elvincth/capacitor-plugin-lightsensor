@@ -86,7 +86,7 @@ async function getLux() {
   try {
     //Initialize the sensor with some settings
     await LightSensor.init({
-      SensorDelay: SensorManager.SENSOR_DELAY_UI, //Optional for android only Default is SENSOR_DELAY_FASTEST
+      SensorDelay: SensorManager.SENSOR_DELAY_UI, //Optional for android only Default is SENSOR_DELAY_NORMAL
     });
 
     //Register onLightSensorChanged listener
