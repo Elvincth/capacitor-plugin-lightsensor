@@ -42,16 +42,17 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
    * Unregister onLightSensorChanged listener
    * @returns void
    */
-  unregisterListener(): void {
+  unregisterListener(): Promise<void>{
     this.onPause();
+    return Promise.resolve(); //Return status
   }
-
   /**
    * Register onLightSensorChanged listener
    * @returns void
    */
-  registerListener(): void {
+  registerListener(): Promise<void>{
     this.onResume();
+    return Promise.resolve(); //Return status
   }
 
   async isAvailable(): Promise<{ status: Boolean }> {

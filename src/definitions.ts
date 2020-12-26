@@ -42,14 +42,13 @@ export interface LightSensorPlugin {
    * Register onLightSensorChanged listener
    * @returns void
    */
-  registerListener(): void;
+  registerListener(): Promise<void>;
 
   /**
    * Unregister onLightSensorChanged listener
    * @returns void
    */
-  unregisterListener(): void;
-
+  unregisterListener(): Promise<void>;
 
   
   /**

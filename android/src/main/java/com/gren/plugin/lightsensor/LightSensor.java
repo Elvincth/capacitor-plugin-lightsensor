@@ -46,12 +46,22 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
     @PluginMethod
     public void unregisterListener(PluginCall call) {
-        onPause();
+        if (mLight != null) {
+            onPause(); //Pause sensor
+            call.resolve();
+        }else{
+            call.reject("Light sensor haven't init");
+        }
     }
 
     @PluginMethod
     public void registerListener(PluginCall call) {
-        onResume(); //Register sensor
+        if (mLight != null) {
+            onResume(); //Register sensor
+            call.resolve();
+        }else{
+            call.reject("Light sensor haven't init");
+        }
     }
 
     //Check is light sensor available
