@@ -76,7 +76,7 @@ TODO
 
 ## Usage
 
-### Example of getting illuminance level on the device
+### Example of getting illuminance level
 ```javascript
 import { SensorManager } from "capacitor-plugin-lightsensor";
 import { Plugins } from "@capacitor/core"; 
@@ -107,6 +107,34 @@ async function getLux() {
   }
 }
 ```
+
+### Example of getting the light sensor information
+```javascript
+//See more in https://developer.android.com/reference/android/hardware/Sensor#getVendor()
+
+async function getInfo() {
+  try {
+    const sensorInfo = await LightSensor.getInfo();
+
+    //For android only, if web all number will return -1
+    
+    console.log("vendor", sensorInfo.vendor); //vendor string of this sensor
+    console.log("version", sensorInfo.version); //version of the sensor's module
+    console.log("type", sensorInfo.type); //generic type of this sensor
+    console.log("maxRange", sensorInfo.maxRange); //maximum range of the sensor in the sensor's unit.
+    console.log("resolution", sensorInfo.resolution); //resolution of the sensor in the sensor's unit.
+    console.log("power", sensorInfo.power); //the power in mA used by this sensor while in use
+    console.log("minDelay", sensorInfo.minDelay); //the minimum delay allowed between two events in microsecond or zero if this sensor only returns a value when the data it's measuring changes.
+    console.log("minDelay", sensorInfo.maxDelay); //The max delay for this sensor in microseconds.
+
+    console.log("sensorInfo", JSON.stringify(sensorInfo));
+    //{"vendor":"OnePlus","version":1,"type":5,"maxRange":4096,"resolution":1,"power":1.7049999237060547,"minDelay":0,"maxDelay":0}
+  } catch (error) {
+    console.log("Light sensor not available");
+  }
+}
+```
+
 
 ## API
 
