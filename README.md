@@ -91,4 +91,11 @@ TODO
 
 ## Usage
 
-TODO
+```javascript
+import { SensorManager } from "capacitor-plugin-lightsensor";
+import { Plugins } from "@capacitor/core"; 
+const { LightSensor } = Plugins;
+
+
+
+```
