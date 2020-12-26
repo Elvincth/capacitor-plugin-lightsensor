@@ -75,7 +75,7 @@ public class MainActivity extends BridgeActivity {
 
 
 ## Usage
-<a id="Gettingilluminancelevel"></a>
+
 ### Getting illuminance level
 
 ```javascript
@@ -108,6 +108,8 @@ async function getLux() {
   }
 }
 ```
+<br>
+
 ### Check the availability of light sensor 
 ```javascript
 import { SensorManager } from "capacitor-plugin-lightsensor";
@@ -128,13 +130,14 @@ async function checkSensor() {
 
 ```
 
+<br>
+
 ### Getting the light sensor information (Android ONLY)
 ```javascript
 import { SensorManager } from "capacitor-plugin-lightsensor";
 import { Plugins } from "@capacitor/core"; 
 const { LightSensor } = Plugins;
 
-//See more in https://developer.android.com/reference/android/hardware/Sensor#getVendor()
 async function getInfo() {
   try {
     const sensorInfo = await LightSensor.getInfo();
@@ -157,7 +160,7 @@ async function getInfo() {
   }
 }
 ```
-
+<br>
 
 ## API
 
@@ -165,11 +168,17 @@ async function getInfo() {
 
 #### init(...)
 
-Initialize the light sensor with settings (See example [here](#Gettingilluminancelevel) )
+Initialize the light sensor with settings (See example [here](#getting-illuminance-level) )
 
-| Param   | Type    | Description                                        |
-|---------|---------|----------------------------------------------------|
-| **`option`**   | `object`  | <code><a href="#init">See option table</a></code>  |
+| Param   | Type    | Description            |
+|---------|---------|------------------------|
+| **`option`**   | `object`  | See option table |
+
+Option
+
+| Key         | Type                 | Description                                                            |
+|-------------|----------------------|------------------------------------------------------------------------|
+| SensorDelay | [ Enum (SensorManager)](#sensormanager) | Optional for android only Default is SensorManager.SENSOR_DELAY_NORMAL |
 
 
 **Returns:** <code>Promise</code>
@@ -178,28 +187,68 @@ Initialize the light sensor with settings (See example [here](#Gettingilluminanc
 
 #### registerListener()
 
-Register [onLightSensorChanged listener](#onLightSensorChanged) (Start or resume the sensor)
+Register [onLightSensorChanged listener](#onLightSensorChanged) (Start or resume the sensor, see example [here](#getting-illuminance-level) )
 
 <br>
 
 #### unregisterListener()
 
-Unregister [onLightSensorChanged listener](#onLightSensorChanged)  (Stop or pause the sensor)
+Unregister [onLightSensorChanged listener](#onLightSensorChanged)  (Stop or pause the sensor, see example [here](#getting-illuminance-level) )
+
+<br>
+
+
+#### isAvailable()
+
+Check if the device have a light sensor or not (See example [here](#check-the-availability-of-light-sensor) )
+
+**Returns:** <code>Promise</code> of following object structure:
+
+| Key    | Type    | Description        |
+|--------|---------|--------------------|
+| status | Boolean | Have light sensor? |
+
 
 <br>
 
 #### getInfo()
 
-Unregister [onLightSensorChanged listener](#onLightSensorChanged)  (Stop or pause the sensor)
+Get light sensor information (See example [here](#getting-the-light-sensor-information-android-only) )
+<p>More information in https://developer.android.com/reference/android/hardware/Sensor#getVendor()</p>
+<p>NOTE: Web didn't support this method it will return -1 for all numbers and Unknown for string</p>
+
+**Returns:** <code>Promise</code> of following object structure:
+
+
+| Key        | Type    | Description                                                                                                                                  |
+|------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------|
+| option     | object  | Vendor string of this sensor                                                                                                                 |
+| version    | Number  | Version of the sensor's module                                                                                                               |
+| type       | Number  | Generic type of this sensor                                                                                                                  |
+| maxRange   | Number  | Maximum range of the sensor in the sensor's unit                                                                                             |
+| resolution | Number  | Resolution of the sensor in the sensor's unit                                                                                                |
+| power      | Number  | The power in mA used by this sensor while in use                                                                                             |
+| minDelay   | Number  | The minimum delay allowed between two events in microsecond or zero if this sensor only returns a value when the data it's measuring changes |
+| maxDelay   | Number  | The max delay for this sensor in microseconds                                                                                                |
 
 <br>
 
-
 ### Events
+
 #### onLightSensorChanged 
+<p>More information in https://developer.android.com/reference/android/hardware/SensorEvent#timestamp</p>
+<p>See example [here](#getting-illuminance-level)</p>
 
+**Returns:** <code>object</code> of following object structure:
 
+| Key       | Type    | Description                                                                                                        |
+|-----------|---------|--------------------------------------------------------------------------------------------------------------------|
+| isTrusted | Boolean | Returns true if event was dispatched by the user agent, and false otherwise. (Capacitor thing you can ignore this) |
+| accuracy  | Boolean | Android only the accuracy of this event, for web return -1                                                         |
+| timestamp | Number  | For android in nanoseconds, For web in millisecond                                                                 |
+| value     | Number  | The illuminance (lux) level                                                                                        |
 
+<br>
 
 ### Enums
 
