@@ -117,8 +117,8 @@ async function getLux() {
 
 | Members              | Value | Description                                   |
 |----------------------|-------|-----------------------------------------------|
-| SENSOR_DELAY_FASTEST | 0     | Get sensor data as fast as possible (Default) |
+| SENSOR_DELAY_FASTEST | 0     | Get sensor data as fast as possible           |
 | SENSOR_DELAY_GAME    | 1     | Rate suitable for games                       |
 | SENSOR_DELAY_UI      | 2     | Rate suitable for the user interface          |
-| SENSOR_DELAY_NORMAL  | 3     | Normal rate                                   |
+| SENSOR_DELAY_NORMAL  | 3     | Normal rate (Default)                         |
 
