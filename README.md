@@ -198,6 +198,7 @@ Register [onLightSensorChanged listener](#onLightSensorChanged) (Start or resume
 Unregister [onLightSensorChanged listener](#onLightSensorChanged)
 
 **Returns:** <code>Promise</code>
+
 <br>
 
 
