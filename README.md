@@ -164,11 +164,7 @@ async function getInfo() {
 
 #### init(...)
 
-```typescript
-init(option?: { SensorDelay: SensorManager }): Promise<void>;
-```
-
-Initialize the light sensor with settings
+Initialize the light sensor with settings (See example [here](# Getting illuminance level))
 
 | Param   | Type    | Description                                        |
 |---------|---------|----------------------------------------------------|
@@ -177,21 +173,30 @@ Initialize the light sensor with settings
 
 **Returns:** <code>Promise</code>
 
+<br>
+
 #### registerListener()
 
-```typescript
-registerListener(): void;
-```
+Register [onLightSensorChanged listener](#onLightSensorChanged) (Start or resume the sensor)
 
-Register [onLightSensorChanged listener](#onLightSensorChanged)
+<br>
 
-| Param   | Type    | Description                                        |
-|---------|---------|----------------------------------------------------|
-| **`option`**   | `object`  | <code><a href="#init">See option table</a></code>  |
+#### unregisterListener()
+
+Unregister [onLightSensorChanged listener](#onLightSensorChanged)  (Stop or pause the sensor)
+
+<br>
+
+#### getInfo()
+
+Unregister [onLightSensorChanged listener](#onLightSensorChanged)  (Stop or pause the sensor)
+
+<br>
 
 
 ### Events
 #### onLightSensorChanged 
+
 
 
 
