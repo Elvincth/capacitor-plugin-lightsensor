@@ -2,7 +2,7 @@
 <h3 align="center">Capacitor Lightsensor Plugin</h3>
 <p align="center"><strong><code>capacitor-plugin-lightsensor</code></strong></p>
 <p align="center">
-This plugin get intensity level on the device
+This plugin get the illuminance level on the device
 </p>
 
 <p align="center">
@@ -27,27 +27,12 @@ This plugin get intensity level on the device
 
 <b> Step 1 </b>
 
-For npm:
-
 ```bash
 npm install capacitor-plugin-lightsensor --save
-```
-
-For yarn:
-
-```bash
-yarn add @capacitor-community/speech-recognition
-```
-
-<b> Step 2 </b>
-
-After install run:
-
-```bash
 npx cap sync
 ```
 
-<b> Step 3 </b>
+<b> Step 2 </b>
 
 IOS Platform: No further action required.
 
@@ -91,11 +76,49 @@ TODO
 
 ## Usage
 
+### Example of getting illuminance level on the device
 ```javascript
 import { SensorManager } from "capacitor-plugin-lightsensor";
 import { Plugins } from "@capacitor/core"; 
 const { LightSensor } = Plugins;
 
+async function getLux() {
+  try {
+    //Initialize the sensor with some settings
+    await LightSensor.init({
+      SensorDelay: SensorManager.SENSOR_DELAY_UI, //Optional for android only Default is SENSOR_DELAY_FASTEST
+    });
 
+    //Register onLightSensorChanged listener
+    LightSensor.registerListener();
 
+    //Listen for the sensor change
+    window.addEventListener("onLightSensorChanged", (evt) => {
+      console.log("value", evt.value); //The illuminance (lux) level 
+      console.log("accuracy", evt.accuracy); //Android only the accuracy of this event, for web return -1
+      console.log("timestamp", evt.timestamp); //For android in nanoseconds, For web in millisecond
+      
+      console.log("onLightSensorChanged", JSON.stringify(evt));  //{"isTrusted":false,"accuracy":3,"timestamp":58769305913765,"value":281.9115905761719}
+    });
+
+  } catch (error) {
+    console.log("Light sensor not available"); //Will return error is no light sensor available in the device
+  }
+}
 ```
+
+## API
+
+### Enums
+
+#### SensorManager 
+<p> (For android only, see more in: https://developer.android.com/reference/android/hardware/SensorManager#SENSOR_DELAY_FASTEST ) </p>
+<!-- https://www.tablesgenerator.com/markdown_tables -->
+
+| Members              | Value | Description                                   |
+|----------------------|-------|-----------------------------------------------|
+| SENSOR_DELAY_FASTEST | 0     | Get sensor data as fast as possible           |
+| SENSOR_DELAY_GAME    | 1     | Rate suitable for games                       |
+| SENSOR_DELAY_UI      | 2     | Rate suitable for the user interface          |
+| SENSOR_DELAY_NORMAL  | 3     | Normal rate (Default)                         |
+
