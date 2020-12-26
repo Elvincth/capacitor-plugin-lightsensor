@@ -21,7 +21,7 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
         timestamp: Number(
           (performance.now() + performance.timeOrigin).toFixed(0),
         ), //millisecond
-        value: event.value,
+        value: event.value, //Get value from devicelight event
       },
     });
     //Trigger the evt
@@ -31,6 +31,8 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
   //Used to register the listener
   protected onResume(): void {
     window.addEventListener('devicelight', this.onLightSensorChanged);
+
+    
   }
 
   //Used to pause the sensor
