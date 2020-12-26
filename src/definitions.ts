@@ -37,7 +37,7 @@ export interface LightSensorPlugin {
     power: Number;
     minDelay: Number;
     maxDelay: Number;
-  }>;
+  }|void>;
 
   isAvailable(): Promise<{ status: Boolean }>;
 }

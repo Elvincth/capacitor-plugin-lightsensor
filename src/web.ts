@@ -68,25 +68,29 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
     power: Number;
     minDelay: Number;
     maxDelay: Number;
-  }> {
+  } | void> {
     //Return dummy data as web cannot read those information
-    return {
-      vendor: 'unknown',
-      version: -1,
-      type: -1,
-      maxRange: -1,
-      resolution: -1,
-      power: -1,
-      minDelay: -1,
-      maxDelay: -1,
-    };
+    if ('AmbientLightSensor' in window) {
+      Promise.resolve({
+        vendor: 'unknown',
+        version: -1,
+        type: -1,
+        maxRange: -1,
+        resolution: -1,
+        power: -1,
+        minDelay: -1,
+        maxDelay: -1,
+      }); //Return status
+    } else {
+      Promise.reject('Light sensor not available cannot get info');
+    }
   }
 
   async init(option?: { SensorDelay: SensorManager }): Promise<void> {
     option; //Dummy used to trick the compiler
 
     if ('AmbientLightSensor' in window) {
-      Promise.resolve({ status: true }); //Return status
+      Promise.resolve(); //Return status
     } else {
       Promise.reject('Light sensor not available');
     }
