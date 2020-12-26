@@ -107,9 +107,9 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
     //Used to pause the sensor
     protected void onPause() {
+
         if (sensorManager != null) {
             sensorManager.unregisterListener(this);
-            sensorManager=null;
         }
 
         Log.d("onPause", "Sensor stopped: " + sensorManager);

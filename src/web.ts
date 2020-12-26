@@ -79,7 +79,7 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
   } | void> {
     //Return dummy data as web cannot read those information
     if ('AmbientLightSensor' in window) {
-      Promise.resolve({
+      return Promise.resolve({
         vendor: 'unknown',
         version: -1,
         type: -1,
@@ -90,7 +90,7 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
         maxDelay: -1,
       }); //Return status
     } else {
-      Promise.reject('Light sensor not available cannot get info');
+      return Promise.reject('Light sensor not available cannot get info');
     }
   }
 
@@ -98,9 +98,9 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
     option; //Dummy used to trick the compiler
 
     if ('AmbientLightSensor' in window) {
-      Promise.resolve(); //Return status
+      return Promise.resolve(); //Return status
     } else {
-      Promise.reject('Light sensor not available');
+      return Promise.reject('Light sensor not available');
     }
   }
 }
