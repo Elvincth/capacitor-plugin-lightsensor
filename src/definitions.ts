@@ -32,7 +32,7 @@ export interface LightSensorPlugin {
    */
 
   /**
-   * Register onSensorChanged listener
+   * Initialize of the light sensor with settings
    * @param {option=} option of light sensor
    * @returns {Promise} Is initialization of light sensor succeed or not
    */
@@ -78,7 +78,7 @@ export interface LightSensorPlugin {
    *
    * @event onLightSensorChanged
    * @type {object}
-   * @returns {"isTrusted":Boolean,"accuracy":3,"timestamp":58769305913765,"value":281.9115905761719}
+   * @returns {"isTrusted":Boolean,"accuracy":Number,"timestamp":Number,"value":Number}
    */
 }
 
