@@ -23,6 +23,11 @@ public class LightSensor extends Plugin implements SensorEventListener {
     private float lux = 0; //Store readings value
     private int delayMode = 0; //Store sensor delay setting value possible values 0,1,2,3
 
+    public void load(){
+        //Init sensor manager
+        sensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
+    }
+
     @PluginMethod
     public void init(PluginCall call) {
         //Get settings value from passed init method
@@ -31,7 +36,6 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
         //init sensors
         if (isSensorAvailable()) {
-            sensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
             mLight = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
             call.resolve(); //succeeding corresponds to calling resolve on the Promise
             Log.d("LightSensor", "Loaded");
@@ -102,7 +106,6 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
     //Used to check is sensor available
     private boolean isSensorAvailable() {
-        sensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT) != null) {
             return true;
         } else {
