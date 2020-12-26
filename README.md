@@ -177,6 +177,23 @@ Initialize the light sensor with settings
 
 **Returns:** <code>Promise</code>
 
+#### registerListener()
+
+```typescript
+registerListener(): void;
+```
+
+Register [onLightSensorChanged listener](#onLightSensorChanged)
+
+| Param   | Type    | Description                                        |
+|---------|---------|----------------------------------------------------|
+| **`option`**   | `object`  | <code><a href="#init">See option table</a></code>  |
+
+
+### Events
+#### onLightSensorChanged 
+
+
 
 ### Enums
 
