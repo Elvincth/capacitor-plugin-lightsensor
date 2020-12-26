@@ -14,9 +14,7 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
   //Used to register the listner
   protected onResume(): void {
     // var evt = new CustomEvent('printerstatechanged', { detail: state });
-
     // window.dispatchEvent(evt);
-
   }
 
   unregisterListener(): void {
@@ -38,7 +36,7 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
     if ('AmbientLightSensor' in window) {
       status = true;
     }
-    
+
     return {
       status: status,
     };
@@ -54,11 +52,17 @@ export class LightSensorWeb extends WebPlugin implements LightSensorPlugin {
     minDelay: Number;
     maxDelay: Number;
   }> {
-
+    //Return dummy data as web cannot read those information
     return {
-      vendor: -1;
-    }
-
+      vendor: 'unknown',
+      version: -1,
+      type: -1,
+      maxRange: -1,
+      resolution: -1,
+      power: -1,
+      minDelay: -1,
+      maxDelay: -1,
+    };
   }
 
   async init(option?: { SensorDelay: SensorManager }): Promise<void> {
