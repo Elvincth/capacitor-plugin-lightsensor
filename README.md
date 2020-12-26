@@ -21,7 +21,7 @@
 
 | Maintainer | GitHub | Social |
 | -----------| -------| -------|
-| Ionitron (example) | [Ionitron](https://github.com/ionitron) | [@ionitron](https://twitter.com/ionitron) |
+| Elvin Chu | [Elvinchu](https://github.com/elvinchu) | [@elvincth](https://twitter.com/elvincth) |
 
 ## Installation
 
@@ -30,6 +30,17 @@ TODO
 ## Configuration
 
 TODO
+
+## Supported methods
+
+| Name                | Android | iOS | Web |
+| :------------------ | :------ | :-- | :-- |
+| init                | ✅      | ❌  | ✅  |
+| registerListener    | ✅      | ❌  | ✅  |
+| unregisterListener  | ✅      | ❌  | ✅  |
+| getInfo             | ✅      | ❌  | ❌  |
+| isAvailable         | ✅      | ❌  | ✅  |
+
 
 ## Usage
 
