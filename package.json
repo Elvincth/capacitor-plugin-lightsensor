@@ -1,6 +1,6 @@
 {
   "name": "capacitor-plugin-lightsensor",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "A capacitor light sensor plugin",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
@@ -17,7 +17,7 @@
   "author": "Elvin Chu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Elvincth/capacitor-plugin-lightsensor/issues"
+    "url": "capacitor-plugin-lightsensor/issues"
   },
   "homepage": "https://github.com/Elvincth/capacitor-plugin-lightsensor",
   "devDependencies": {
@@ -61,9 +61,6 @@
   "repository": {
     "type": "git",
     "url": "capacitor-plugin-lightsensor"
-  },
-  "bugs": {
-    "url": "capacitor-plugin-lightsensor/issues"
   },
   "dependencies": {}
 }
