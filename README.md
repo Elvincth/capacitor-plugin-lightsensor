@@ -145,9 +145,9 @@ async function checkSensor() {
   const isSensorAvailable = await LightSensor.isAvailable();
 
   if (isSensorAvailable.status) {
-    console.log("There is light sensor in this device");
+    console.log("There is light sensor on this device");
   } else {
-    console.log("No light sensor in this device");
+    console.log("No light sensor on this device");
   }
   
   console.log("isSensorAvailable", JSON.stringify(isSensorAvailable)); // {"status":true} or {"status":false}
