@@ -241,7 +241,7 @@ Get light sensor information (See example [here](#getting-the-light-sensor-infor
 
 #### onLightSensorChanged 
 <p>More information in https://developer.android.com/reference/android/hardware/SensorEvent#timestamp</p>
-<p>See example [here](#getting-illuminance-level)</p>
+See example [here](#getting-illuminance-level) 
 
 **Returns:** <code>object</code> of following object structure:
 
