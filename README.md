@@ -110,6 +110,31 @@ async function getLux() {
 ```
 <br>
 
+### Pause the sensor after registered
+
+```javascript
+import { SensorManager } from "capacitor-plugin-lightsensor";
+import { Plugins } from "@capacitor/core"; 
+const { LightSensor } = Plugins;
+
+async function pause() {
+  try {
+   
+    //Pause the sesnor
+    await LightSensor.unregisterListener();
+    
+    //To resume run register again
+    //await LightSensor.registerListener();
+
+  } catch (error) {
+    console.log("Error occur:", error);
+  }
+}
+```
+
+<br>
+
+
 ### Check the availability of light sensor 
 ```javascript
 import { SensorManager } from "capacitor-plugin-lightsensor";
@@ -241,7 +266,8 @@ Get light sensor information (See example [here](#getting-the-light-sensor-infor
 
 #### onLightSensorChanged 
 <p>More information in https://developer.android.com/reference/android/hardware/SensorEvent#timestamp</p>
-See example [here](#getting-illuminance-level) 
+
+See example [here](#getting-illuminance-level)
 
 **Returns:** <code>object</code> of following object structure:
 
