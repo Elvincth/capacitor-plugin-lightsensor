@@ -145,9 +145,9 @@ async function checkSensor() {
   const isSensorAvailable = await LightSensor.isAvailable();
 
   if (isSensorAvailable.status) {
-    console.log("There is light sensor in this device");
+    console.log("There is light sensor on this device");
   } else {
-    console.log("No light sensor in this device");
+    console.log("No light sensor on this device");
   }
   
   console.log("isSensorAvailable", JSON.stringify(isSensorAvailable)); // {"status":true} or {"status":false}
@@ -251,7 +251,7 @@ Get light sensor information (See example [here](#getting-the-light-sensor-infor
 
 | Key        | Type    | Description                                                                                                                                  |
 |------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| option     | object  | Vendor string of this sensor                                                                                                                 |
+| vendor     | object  | Vendor string of this sensor                                                                                                                 |
 | version    | Number  | Version of the sensor's module                                                                                                               |
 | type       | Number  | Generic type of this sensor                                                                                                                  |
 | maxRange   | Number  | Maximum range of the sensor in the sensor's unit                                                                                             |
