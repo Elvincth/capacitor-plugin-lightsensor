@@ -123,7 +123,7 @@ async function pause() {
     //Pause the sesnor
     await LightSensor.unregisterListener();
     
-    //To resume run register again
+    //To resume, run register again
     //await LightSensor.registerListener();
 
   } catch (error) {
