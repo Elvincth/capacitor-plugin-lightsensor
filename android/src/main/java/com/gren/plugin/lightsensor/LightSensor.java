@@ -71,10 +71,6 @@ public class LightSensor extends Plugin implements SensorEventListener {
     public void isAvailable(PluginCall call) {
         JSObject status = new JSObject();
 
-        if(sensorManager==null){
-            sensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
-        }
-
         if (isSensorAvailable()) {
             status.put("status", true);
         } else {
@@ -108,6 +104,11 @@ public class LightSensor extends Plugin implements SensorEventListener {
 
     //Used to check is sensor available
     private boolean isSensorAvailable() {
+
+        if(sensorManager==null){
+            sensorManager = (SensorManager) this.getContext().getSystemService(Context.SENSOR_SERVICE);
+        }
+        
         if (sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT) != null) {
             return true;
         } else {
