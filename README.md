@@ -251,7 +251,7 @@ Get light sensor information (See example [here](#getting-the-light-sensor-infor
 
 | Key        | Type    | Description                                                                                                                                  |
 |------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| option     | object  | Vendor string of this sensor                                                                                                                 |
+| vendor     | object  | Vendor string of this sensor                                                                                                                 |
 | version    | Number  | Version of the sensor's module                                                                                                               |
 | type       | Number  | Generic type of this sensor                                                                                                                  |
 | maxRange   | Number  | Maximum range of the sensor in the sensor's unit                                                                                             |
