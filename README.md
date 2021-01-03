@@ -6,7 +6,7 @@ This plugin get the illuminance level on the device
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/maintenance/yes/2020?style=flat-square" />
+  <img src="https://img.shields.io/maintenance/yes/2021?style=flat-square" />
   <a href="https://github.com/capacitor-community/example/actions?query=workflow%3A%22CI%22">
   <a href="https://www.npmjs.com/package/capacitor-plugin-lightsensor"><img src="https://img.shields.io/npm/l/capacitor-plugin-lightsensor?style=flat-square" /></a>
 <br>
